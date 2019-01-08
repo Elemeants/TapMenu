@@ -9,7 +9,7 @@ import { TapMenuDialogComponent } from '../TapMenu/TapMenuDialog/TapMenuDialog.c
 })
 export class NavmenuComponent implements OnInit {
   public isBussyModal: boolean;
-  constructor(public dialog: MatDialog) { 
+  constructor(public dialog: MatDialog) {
     this.isBussyModal = true;
   }
 

@@ -17,14 +17,14 @@
   <mat-drawer-content style="overflow: auto">
     <div style="height: auto; min-height: 86%">
       <div *ngIf="selectedIndex === 1">
-        <app-grindicons></app-grindicons>
+        <app-grindicons [iconsData]='getIconsSelectors()' (inChange)='idSelected = $event'> </app-grindicons>
       </div>
       <div *ngIf="selectedIndex === 0">
-        Testing
+        <app-grindicons [iconsData]='getIconsIndications()' (inChange)='idSelected = $event'> </app-grindicons>
       </div>
     </div>
     <mat-toolbar style="height: 40px; justify-content: flex-end" class="FixBottom FlexContainer"> 
-      <button mat-button style="height: 100%"> Guardar </button> 
+      <button mat-button style="height: 100%" (click)="SaveIcon()"> Guardar </button> 
     </mat-toolbar>
   </mat-drawer-content>
 </mat-drawer-container>

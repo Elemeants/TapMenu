@@ -1,3 +1,4 @@
+import { IconsService } from './TapMenuDialog/iconsService/icons.service';
 import { TapMenuDialogComponent } from './TapMenuDialog/TapMenuDialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -33,6 +34,9 @@ import { GrindIconsComponent } from './TapMenuDialog/grindIcons/grindIcons.compo
   ],
   exports: [
     TapMenuDialogComponent
+  ],
+  providers: [
+    IconsService
   ]
 })
 export class TapMenuModule { }
