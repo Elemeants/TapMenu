@@ -4,27 +4,31 @@
 </div>
 <hr>
 <mat-drawer-container class="noPadding noMargin fullSize">
-  <mat-drawer mode="side" opened #stepper>
-      <mat-vertical-stepper>
-        <mat-step (click)="showAler()">
-          <ng-template matStepLabel (click)="showAler()">Icono</ng-template>
+  <mat-drawer mode="side" opened>
+      <mat-vertical-stepper #stepper (selectionChange)='stepChange($event)'>
+        <mat-step [completed]="false">
+          <ng-template matStepLabel>Icono</ng-template>
         </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Datos</ng-template>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Campos</ng-template>
+        <mat-step [completed]="false">
+          <ng-template matStepLabel>Indicador</ng-template>
         </mat-step>
       </mat-vertical-stepper>
   </mat-drawer>
   <mat-drawer-content style="overflow: auto">
-    <div style="height: auto; min-height: 75%">
-      Lectus faucibus consequat pharetra parturient nisi posuere tempus blandit ut tellus primis sed dignissim vel, pellentesque elementum dictumst feugiat scelerisque maecenas facilisi ante potenti nunc sollicitudin condimentum cras. Gravida massa sapien dis tristique nulla sem vestibulum, euismod tincidunt curae non felis semper penatibus dapibus, aenean cursus inceptos malesuada dui est. Platea nullam arcu quis eleifend conubia cum turpis odio pulvinar quam mus, diam eu ornare mollis enim ultrices accumsan phasellus proin taciti molestie, porta id volutpat egestas neque tempor suspendisse pretium himenaeos urna. Sagittis venenatis placerat duis ridiculus lacus ac lobortis, suscipit tortor aptent imperdiet nec netus luctus vehicula, mattis vivamus vulputate fames litora dictum. Varius sodales at facilisis hac purus nisl iaculis convallis curabitur fusce, eget auctor hendrerit torquent velit etiam erat rutrum montes, rhoncus mauris in fringilla libero magna nibh morbi metus. Commodo ultricies ullamcorper vitae praesent senectus, per aliquet class nam sociis risus, habitant congue a eros. Mi nostra magnis sociosqu donec ligula orci lacinia, quisque aliquam leo et habitasse bibendum interdum natoque, ad viverra laoreet justo nascetur cubilia. Fermentum augue porttitor integer ultrices odio nisi gravida accumsan orci, rutrum eleifend nulla dictum massa semper mattis. Facilisis morbi proin torquent netus pharetra a quis in litora, per quam sodales mauris nec aliquet sociosqu habitasse libero, aptent dignissim pretium suscipit habitant sapien integer molestie. At sollicitudin conubia mollis tempus lobortis vitae vestibulum lacus imperdiet, fusce platea curabitur parturient nam ridiculus himenaeos mus, vulputate nunc tortor scelerisque class commodo ut pulvinar. Neque etiam magna suspendisse hac lectus vivamus nascetur et, arcu metus dictumst senectus cum ullamcorper elementum luctus tristique, blandit cursus tellus lacinia sed penatibus eget. Venenatis natoque eros sociis consequat fermentum varius congue, porttitor viverra ante taciti inceptos condimentum urna, enim feugiat justo turpis cras iaculis. Quisque eu nibh pellentesque auctor id dis donec facilisi, vel hendrerit dapibus aenean purus maecenas posuere, curae montes euismod erat duis felis phasellus. Non magnis malesuada potenti ornare fringilla nostra porta vehicula, ad sem rhoncus interdum placerat fames egestas mi cubilia, tincidunt nisl ligula dui bibendum laoreet nullam. Primis faucibus sagittis augue aliquam praesent leo, convallis velit ac tempor diam ultricies, volutpat risus est penatibus vestibulum. Consequat orci bibendum risus accumsan ac ad cursus parturient magna, dictum ultricies dignissim gravida himenaeos nascetur varius per ut, tempus habitasse eget vitae pulvinar semper sollicitudin ridiculus. Urna vel tortor habitant hac vivamus erat taciti maecenas quis lacus, quam inceptos convallis imperdiet elementum viverra non torquent tellus, sagittis ante sem class lectus magnis eleifend proin volutpat. Cubilia diam potenti curae hendrerit facilisis a rhoncus sed pharetra montes nisi, iaculis eros justo fringilla vehicula dapibus aenean fusce scelerisque nostra, fames etiam faucibus ultrices nec et cum senectus luctus in. Primis molestie interdum egestas enim blandit, dui laoreet pellentesque pretium lacinia quisque, sodales mi id tristique. Aliquam turpis phasellus mus morbi suscipit natoque euismod dis, sapien nam neque platea ornare felis est nisl malesuada, tincidunt auctor nullam odio nibh eu duis. Dictumst vulputate placerat tempor venenatis velit commodo, condimentum cras sociis posuere donec, lobortis ligula metus purus mattis.
+    <div style="height: auto; min-height: 86%">
+      <div *ngIf="selectedIndex === 1">
+        <app-grindicons></app-grindicons>
+      </div>
+      <div *ngIf="selectedIndex === 0">
+        Testing
+      </div>
     </div>
-    <mat-toolbar style="height: 50px; justify-content: flex-end" class="FixBottom FlexContainer"> <button mat-button style="height: 100%"> Guardar </button> </mat-toolbar>
+    <mat-toolbar style="height: 40px; justify-content: flex-end" class="FixBottom FlexContainer"> 
+      <button mat-button style="height: 100%"> Guardar </button> 
+    </mat-toolbar>
   </mat-drawer-content>
 </mat-drawer-container>
 <hr>
-<div style="height: auto; justify-content: flex-end" class="FlexContainer">
-  <button mat-button (click)="onNoClick()"> Cerrar </button>
+<div style="height: 30px; justify-content: flex-end" class="FlexContainer noPadding noMargin">
+  <button mat-button (click)="onNoClick(true)"> Cerrar </button>
 </div>

@@ -2,5 +2,5 @@
   <div>
     TapMenu app
   </div>
-  <button mat-button (click)='openTapMenu()'> open configuration </button>
+  <button mat-button (click)='openTapMenu()' [disabled]='!isBussyModal'> open configuration </button>
 </mat-toolbar>

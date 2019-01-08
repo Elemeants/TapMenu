@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatStepper } from '@angular/material';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-tapmenudialog',
@@ -9,20 +10,27 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatStepper } from '@angular/material';
 
 export class TapMenuDialogComponent implements OnInit {
   public side = 'side';
+  public selectedIndex: number;
   @ViewChild('stepper') private myStepper: MatStepper;
   constructor(
     public dialogRef: MatDialogRef<TapMenuDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public inputData: any) { }
+    @Inject(MAT_DIALOG_DATA) public inputData: any) {
+    this.selectedIndex = 1;
+  }
+
   ngOnInit() {
   }
 
-  showAler() {
-    alert('Hola');
+  stepChange(event?: StepperSelectionEvent) {
+    this.selectedIndex = this.myStepper.selectedIndex;
+    console.log(this.myStepper.selectedIndex);
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  showAlert() {
+    console.log('selected');
   }
 
-  Finished() { }
+  onNoClick(status?: boolean): void {
+    this.dialogRef.close(status);
+  }
 }

@@ -8,18 +8,21 @@ import { TapMenuDialogComponent } from '../TapMenu/TapMenuDialog/TapMenuDialog.c
   styleUrls: ['./navmenu.component.css']
 })
 export class NavmenuComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) { }
-
-  ngOnInit() {
+  public isBussyModal: boolean;
+  constructor(public dialog: MatDialog) { 
+    this.isBussyModal = true;
   }
 
+  ngOnInit() { }
+
   openTapMenu() {
+    this.isBussyModal = false;
     const dialogRef = this.dialog.open(TapMenuDialogComponent, {
       width: '700px',
       height: '500px'
     });
     dialogRef.afterClosed().subscribe(result => {
+      this.isBussyModal = true;
     });
   }
 }
